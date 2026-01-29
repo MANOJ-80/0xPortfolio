@@ -1,0 +1,153 @@
+% Resume in Latex
+% Author : Jake Gutierrez
+% Customized & Rewritten for Manoj G
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\raggedright
+\raggedbottom
+\setlength{\tabcolsep}{0in}
+\setlength{\itemsep}{-2pt}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\titlerule \vspace{-6pt}]
+
+\pdfgentounicode=1
+
+% Commands
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+\newcommand{\resumeProjectHeading}[2]{
+\item
+\begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
+\textbf{#1} & \small #2 \\
+\end{tabular*}\vspace{-4pt}
+}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADER----------
+\begin{center}
+{\Huge \scshape Manoj G} \\ \vspace{2pt}
+Coimbatore, Tamil Nadu \\ \vspace{2pt}
+\small
+\faPhone\ +91 9677936179 \quad
+\href{mailto:manojofficial.018@gmail.com}{\faEnvelope\ manojofficial.018@gmail.com} \quad
+\href{https://github.com/MANOJ-80}{\faGithub\ github.com/MANOJ-80} \quad
+\href{https://www.linkedin.com/in/manoj-g-2444ab28a/}{\faLinkedin\ linkedin.com/in/manoj-g-2444ab28a}
+\vspace{-8pt}
+\end{center}
+
+%----------EDUCATION----------
+\section{Education}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{PSG Institute of Technology and Applied Research}, Coimbatore}{2023 -- 2027}
+    \resumeItemListStart
+        \resumeItem{B.Tech in Computer Science \& Business Systems \hfill \textbf{CGPA: 8.31 / 10}}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Govt. Higher Secondary School}, Namakkal}{March 2023}
+    \resumeItemListStart
+        \resumeItem{Class XII (HSC) \hfill \textbf{Percentage: 92.33\%}}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%----------EXPERIENCE----------
+\section{Experience}
+\resumeSubHeadingListStart
+\resumeProjectHeading
+  {\textbf{Open Source Contributor}}{Jan 2026 -- Present}
+  \resumeItemListStart
+    \resumeItem{Implemented graceful \textbf{error handling} for LLM connection failures in \textbf{Robin} AI tool's Streamlit UI, eliminating raw Python traceback exposure to end users. \href{https://github.com/apurvsinghgautam/robin/pull/62}{[PR]}}
+    \resumeItem{Added pre-flight \textbf{credential validation} in Robin's LLM module to gracefully handle missing API keys and offline model servers without crashing. \href{https://github.com/apurvsinghgautam/robin/pull/62}{[PR]}}
+    \resumeItem{Enhanced \textbf{SearXNG} Docker documentation with improved systemd deployment instructions, proper syntax highlighting, and grammatical corrections. \href{https://github.com/searxng/searxng-docker/pull/316}{[PR]} }
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
+%----------PROJECTS----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeProjectHeading
+  {\textbf{0xMemory}}{\emph{Python, FastAPI, ChromaDB, MCP} $|$ \href{https://github.com/MANOJ-80/0xMemory}{\faGithub}}
+  \resumeItemListStart
+    \resumeItem{Architected a \textbf{local-first cross-LLM memory server} implementing the \textbf{Model Context Protocol (MCP)} to provide persistent project-scoped context and reducing repeated prompt tokens.}
+    \resumeItem{Designed a dual-storage system syncing Markdown files with a \textbf{ChromaDB hybrid search index} (vector + keyword) for accurate, explainable knowledge retrieval.}
+    \resumeItem{Developed high-performance CLI tools for real-time knowledge injection and retrieval, optimizing LLM context windows and reducing token usage.}
+  \resumeItemListEnd
+  
+\resumeProjectHeading
+  {\textbf{0xArmor}}{\emph{Python, FastAPI, Docker, Linux, Bash} $|$ \href{https://github.com/MANOJ-80/0xArmor}{\faGithub}}
+  \resumeItemListStart
+    \resumeItem{Engineered a \textbf{distributed security hardening platform} orchestrating Python agents to enforce CIS-aligned policies (SSH, UFW, Sysctl) across Linux infrastructure, ensuring compliance and robust defense.}
+    \resumeItem{Implemented an automated \textbf{Drift Detection engine} with scheduled 60s compliance checks, reporting deviations in real-time to a centralized dashboard for immediate remediation.}
+    \resumeItem{Built a fault-tolerant \textbf{agent architecture} using pull-based communication to operate securely behind firewalls without exposing inbound ports, with persistent SQLite audit logging.}
+  \resumeItemListEnd
+
+\resumeProjectHeading
+  {\textbf{0xShelf}}{\emph{React, Node.js, MongoDB, Redis, Docker} $|$ \href{https://github.com/MANOJ-80/0xShelf}{\faGithub}}
+  \resumeItemListStart
+    \resumeItem{Built a scalable \textbf{e-commerce backend} handling complex inventory management and order processing with strict schema validation using Mongoose.}
+    \resumeItem{Implemented \textbf{Role-Based Access Control (RBAC)} using custom JWT middleware to secure Admin/User APIs with token refresh mechanisms.}
+    \resumeItem{Designed \textbf{RESTful API endpoints} with proper error handling, pagination, and consistent response structures for seamless frontend integration.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, JavaScript, SQL, Bash} \\
+     \textbf{Frameworks \& Libraries}{: FastAPI, Node.js, Express.js, React, Tailwind CSS} \\
+     \textbf{Databases}{: MongoDB, PostgreSQL, ChromaDB} \\
+     \textbf{Developer Tools}{: Git, Docker, Linux, Postman, CI/CD, GitHub Actions} \\
+     \textbf{AI/LLM}{: MCP (Model Context Protocol), AI Agents, LLMs,  Vector Embeddings, Prompt/Context Engineering}
+    }}
+ \end{itemize}
+
+%----------CERTIFICATIONS----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{Google Cybersecurity Professional Certificate — \href{https://coursera.org/share/89f83a7866133d09058d3275861e6204}{Coursera}}}
+\end{itemize}
+
+%----------INTERESTS----------
+\section{Areas of Interest}
+\quad \small{Operating Systems \quad $\mid$ \quad DBMS \quad $\mid$ \quad Computer Networks \quad $\mid$ \quad Object Oriented Programming}
+
+\end{document}

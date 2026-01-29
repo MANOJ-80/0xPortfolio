@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Colors */
+  --color-background: #030303;
+  --color-foreground: #e4e4e4;
+  --color-accent-lime: #ccff00;
+  --color-accent-silver: #e4e4e4;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-orange: #ff4d00;
+  --color-grid-light: rgba(228, 228, 228, 0.05);
+  --color-grid-hover: rgba(204, 255, 0, 0.1);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Font families */
+  --font-display: var(--font-clash), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+  --font-sans: var(--font-inter), sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Animations */
+  --animate-spin-slow: spin 10s linear infinite;
+  --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glitch: glitch 1s linear infinite;
+  --animate-boot: boot 1.5s ease-out forwards;
+
+  /* Keyframes */
+  @keyframes boot {
+    0% {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes glitch {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    20% {
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 0 80%);
+    }
+    80% {
+      clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
   }
 }
 
+:root {
+  --font-clash: "Clash Display", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+  --font-inter: "Inter", sans-serif;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  cursor: none;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis Smooth Scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--color-accent-lime);
+  color: var(--color-background);
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide Spline Watermark */
+.spline-container a[href*="spline"],
+.spline-container div[style*="bottom: 8px"],
+.spline-container > div > a,
+[data-spline-watermark],
+div[style*="position: absolute"][style*="right: 8px"][style*="bottom: 8px"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
