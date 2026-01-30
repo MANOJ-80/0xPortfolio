@@ -5,9 +5,9 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-20">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-20 pointer-events-none select-none">
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-6">
+      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pointer-events-auto select-auto">
         {/* Liquid Glass Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,13 +39,16 @@ export const Hero = () => {
             >
               <span className="w-2.5 h-2.5 rounded-full bg-accent-lime animate-pulse shadow-[0_0_15px_#CCFF00]"></span>
               <span className="font-mono text-xs text-accent-lime tracking-widest uppercase">
-                Online // 0xMe
+                Available for Work
               </span>
             </div>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="relative font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tight leading-[0.95] mb-8">
+          {/* Main Heading - Ultra Wide Typography with Brettaline */}
+          <h1
+            className="relative text-6xl sm:text-7xl md:text-9xl font-bold tracking-wider leading-[0.9] mb-8"
+            style={{ fontFamily: "var(--font-family-brettaline)" }}
+          >
             <span className="text-white block drop-shadow-lg">System</span>
             <span className="text-accent-lime block drop-shadow-[0_0_30px_rgba(204,255,0,0.5)]">
               Architect
@@ -54,9 +57,11 @@ export const Hero = () => {
 
           {/* Description */}
           <p className="relative font-mono text-sm md:text-base text-gray-300 max-w-lg mx-auto leading-relaxed mb-10">
-            Building high-performance backend systems.{" "}
-            <span className="text-accent-lime font-semibold">Security</span> is
-            architectural, not an afterthought.
+            Building scalable systems & secure infrastructure.{" "}
+            <span className="text-accent-lime font-semibold">
+              Full-stack engineering
+            </span>{" "}
+            with a focus on performance, security & AI integration.
           </p>
 
           {/* CTA Buttons */}

@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Custom Fonts */
+@font-face {
+  font-family: "Brettaline";
+  src: url("/fonts/BrettalineRegular-lxrLV.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CS Brooklyn";
+  src: url("/fonts/CsBrooklynRegularDemo-XGmDa.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Colors */
   --color-background: #030303;
@@ -12,9 +29,14 @@
   --color-grid-hover: rgba(204, 255, 0, 0.1);
 
   /* Font families */
-  --font-display: var(--font-clash), sans-serif;
-  --font-mono: var(--font-jetbrains), monospace;
-  --font-sans: var(--font-inter), sans-serif;
+  --font-family-display: var(--font-display), system-ui, sans-serif;
+  --font-family-wide:
+    var(--font-wide), var(--font-display), system-ui, sans-serif;
+  --font-family-mono: var(--font-mono), monospace;
+  --font-family-sans: var(--font-sans), system-ui, sans-serif;
+  --font-family-brettaline:
+    "Brettaline", var(--font-display), system-ui, sans-serif;
+  --font-family-brooklyn: "CS Brooklyn", system-ui, sans-serif;
 
   /* Animations */
   --animate-spin-slow: spin 10s linear infinite;
@@ -51,9 +73,7 @@
 }
 
 :root {
-  --font-clash: "Clash Display", sans-serif;
-  --font-jetbrains: "JetBrains Mono", monospace;
-  --font-inter: "Inter", sans-serif;
+  /* These are fallbacks - Next.js sets --font-sans, --font-display, etc via className */
 }
 
 body {
@@ -61,8 +81,27 @@ body {
   background: var(--color-background);
   cursor: none;
   overflow-x: hidden;
-  font-family: var(--font-sans);
+  font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Font utility classes - using CSS variables set by Next.js Google Fonts loader */
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.font-wide {
+  font-family: var(--font-wide), var(--font-display), system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+.font-sans {
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
 /* Lenis Smooth Scroll */

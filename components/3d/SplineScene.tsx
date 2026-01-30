@@ -1,6 +1,7 @@
 "use client";
 
 import { lazy, Suspense } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 // Lazy load the standard Spline component (not the Next.js one which has async issues)
 const Spline = lazy(() => import("@splinetool/react-spline"));
@@ -11,8 +12,21 @@ interface SplineSceneProps {
 }
 
 export const SplineScene = ({ url, className = "" }: SplineSceneProps) => {
+  // Track scroll progress across the entire page
+  const { scrollYProgress } = useScroll();
+
+  // Rotation effect: rotates the scene vertically as you scroll (like click-drag behavior)
+  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 60]);
+
   return (
-    <div className={`relative ${className}`}>
+    <motion.div
+      className={`relative ${className}`}
+      style={{
+        rotateX,
+        transformPerspective: 1200,
+        transformOrigin: "center center",
+      }}
+    >
       <Suspense
         fallback={
           <div className="w-full h-full min-h-[400px] flex items-center justify-center bg-black/50">
@@ -32,6 +46,6 @@ export const SplineScene = ({ url, className = "" }: SplineSceneProps) => {
         className="absolute bottom-0 right-0 w-48 h-16 bg-gradient-to-tl from-black via-black/80 to-transparent pointer-events-none z-50"
         aria-hidden="true"
       />
-    </div>
+    </motion.div>
   );
 };

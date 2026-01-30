@@ -8,26 +8,30 @@ const projects = [
   {
     id: "01",
     name: "0xARMOR",
-    desc: "Distributed Security Compliance Platform",
-    tech: "Python / FastAPI / Docker",
+    desc: "Distributed Security Hardening & Compliance Platform",
+    tech: "Python / FastAPI / Docker / Linux",
+    url: "https://github.com/MANOJ-80/0xArmor",
   },
   {
     id: "02",
     name: "0xMEMORY",
-    desc: "Cross-LLM Context Engine",
-    tech: "MCP / ChromaDB / RAG",
+    desc: "Cross-LLM Context Engine with Persistent Memory",
+    tech: "MCP / ChromaDB / Python / RAG",
+    url: "https://github.com/MANOJ-80/0xMemory",
   },
   {
     id: "03",
     name: "0xSHELF",
-    desc: "E-Commerce Microservices",
-    tech: "React / Node.js / MongoDB",
+    desc: "E-Commerce Microservices Backend",
+    tech: "React / Node.js / MongoDB / Redis",
+    url: "https://github.com/MANOJ-80/0xShelf",
   },
   {
     id: "04",
     name: "0xRUPEX",
-    desc: "Local-First Financial Analytics",
-    tech: "Kotlin / Self-Hosted",
+    desc: "Privacy-First Personal Finance Analytics",
+    tech: "Android (Kotlin) / Node.js / Self-Hosted",
+    url: "https://github.com/MANOJ-80/0xRupex",
   },
 ];
 
@@ -37,14 +41,17 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 px-6 relative z-10 w-full max-w-7xl mx-auto min-h-screen flex flex-col justify-center"
+      className="py-24 px-6 relative z-10 w-full max-w-7xl mx-auto min-h-screen flex flex-col justify-center pointer-events-none select-none"
     >
-      <div className="mb-12 border-b border-white/20 pb-8 flex items-end justify-between bg-black/60 backdrop-blur-xl p-6 rounded-lg">
+      <div className="mb-12 border-b border-white/20 pb-8 flex items-end justify-between pointer-events-auto select-auto">
         <div>
           <span className="font-mono text-accent-lime text-xs tracking-widest block mb-2 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
             [02] // ARTIFACTS
           </span>
-          <h2 className="font-display text-5xl md:text-8xl font-bold uppercase text-white leading-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]">
+          <h2
+            className="font-display text-4xl md:text-6xl font-bold uppercase text-white leading-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]"
+            style={{ fontFamily: "var(--font-family-brettaline)" }}
+          >
             <KineticText text="Selected_Works" />
           </h2>
         </div>
@@ -54,15 +61,18 @@ export const Projects = () => {
         </div>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col pointer-events-auto select-auto">
         {projects.map((project) => (
-          <motion.div
+          <motion.a
             key={project.id}
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0.8 }}
             whileHover={{ opacity: 1, paddingLeft: "10px" }}
             onHoverStart={() => setActiveProject(project.id)}
             onHoverEnd={() => setActiveProject(null)}
-            className="group py-8 border-b border-white/20 relative cursor-pointer transition-all duration-300 bg-black/50 backdrop-blur-md px-4 hover:bg-black/70"
+            className="group py-8 border-b border-white/20 relative cursor-pointer transition-all duration-300 bg-black/50 backdrop-blur-md px-4 hover:bg-black/70 block"
           >
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
               <span className="col-span-1 font-mono text-accent-lime/60 text-base group-hover:text-accent-lime transition-colors">
@@ -83,7 +93,7 @@ export const Projects = () => {
               </div>
             </div>
 
-            {/* Hover Reveal - Keep simplified */}
+            {/* Hover Reveal */}
             {activeProject === project.id && (
               <motion.div
                 layoutId="project-preview"
@@ -93,11 +103,11 @@ export const Projects = () => {
                 exit={{ opacity: 0 }}
               >
                 <span className="font-mono text-accent-lime text-xs animate-pulse">
-                  [PREVIEW_ACTIVE]
+                  → VIEW ON GITHUB
                 </span>
               </motion.div>
             )}
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </section>

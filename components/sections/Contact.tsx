@@ -3,81 +3,110 @@
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
+const socials = [
+  {
+    label: "GitHub",
+    handle: "@MANOJ-80",
+    url: "https://github.com/MANOJ-80",
+    icon: "→",
+  },
+  {
+    label: "Email",
+    handle: "manojofficial.018@gmail.com",
+    url: "mailto:manojofficial.018@gmail.com",
+    icon: "✉",
+  },
+  {
+    label: "LinkedIn",
+    handle: "manoj-g",
+    url: "https://www.linkedin.com/in/manoj-g-2444ab28a/",
+    icon: "in",
+  },
+];
+
 export const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-32 px-6 relative z-10 w-full max-w-7xl mx-auto mb-20"
+      className="py-32 px-6 relative z-10 w-full max-w-7xl mx-auto mb-20 pointer-events-none select-none"
     >
-      {/* Main Glass Container - matching Projects style */}
+      {/* Main Glass Container */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl bg-black/60 backdrop-blur-xl p-8 md:p-12 rounded-lg border border-white/20"
+        className="bg-black/60 backdrop-blur-xl p-8 md:p-12 rounded-lg border border-white/20 pointer-events-auto select-auto"
       >
         <span className="font-mono text-accent-lime text-xs tracking-widest block mb-2 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
           [03] // TRANSMISSION
         </span>
-        <h2 className="font-display text-5xl md:text-7xl font-bold uppercase text-white mb-12 leading-[0.95] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]">
+        <h2
+          className="font-display text-5xl md:text-7xl font-bold uppercase text-white mb-4 leading-[0.95] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]"
+          style={{ fontFamily: "var(--font-family-brettaline)" }}
+        >
           Let's Build <br />
-          <span className="text-gray-500">The Future.</span>
+          <span className="text-accent-lime">Together.</span>
         </h2>
+        <p
+          className="text-lg md:text-3xl text-gray-400 mb-12 max-w-lg"
+          style={{ fontFamily: "var(--font-family-brooklyn)" }}
+        >
+          Open for collaborations, freelance projects, and interesting
+          conversations about systems & security.
+        </p>
 
-        <form className="space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Name Input */}
-            <div className="group relative">
-              <label className="font-mono text-[10px] text-accent-lime mb-3 block uppercase tracking-wider">
-                Identifier
-              </label>
-              <input
-                type="text"
-                className="w-full py-4 px-4 text-lg font-sans text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
-                placeholder="ENTER_NAME"
-              />
-            </div>
+        {/* Social Links Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          {socials.map((social, i) => (
+            <motion.a
+              key={i}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02, borderColor: "#CCFF00" }}
+              className="group p-6 border border-white/20 bg-black/30 rounded-lg hover:bg-black/50 transition-all flex items-center justify-between"
+            >
+              <div>
+                <span className="font-mono text-[10px] text-accent-lime/70 uppercase tracking-widest block mb-1">
+                  {social.label}
+                </span>
+                <span className="font-mono text-sm text-white group-hover:text-accent-lime transition-colors">
+                  {social.handle}
+                </span>
+              </div>
+              <span className="text-2xl text-accent-lime/50 group-hover:text-accent-lime group-hover:translate-x-1 transition-all">
+                {social.icon}
+              </span>
+            </motion.a>
+          ))}
+        </div>
 
-            {/* Email Input */}
-            <div className="group relative">
-              <label className="font-mono text-[10px] text-accent-lime mb-3 block uppercase tracking-wider">
-                Signal_Freq
-              </label>
-              <input
-                type="email"
-                className="w-full py-4 px-4 text-lg font-sans text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
-                placeholder="ENTER_EMAIL"
-              />
-            </div>
-          </div>
-
-          {/* Message Textarea */}
-          <div className="group relative">
-            <label className="font-mono text-[10px] text-accent-lime mb-3 block uppercase tracking-wider">
-              Payload
-            </label>
-            <textarea
-              rows={4}
-              className="w-full py-4 px-4 text-lg font-sans text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30 resize-none"
-              placeholder="TRANSMIT_MESSAGE..."
+        {/* Quick Contact Form */}
+        <div className="border-t border-white/10 pt-8">
+          <h3 className="font-mono text-xs text-accent-lime/70 uppercase tracking-widest mb-6">
+            // DROP_MESSAGE
+          </h3>
+          <form className="flex flex-col md:flex-row gap-4">
+            <input
+              type="email"
+              className="flex-1 py-4 px-4 text-sm font-mono text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
+              placeholder="YOUR_EMAIL"
             />
-          </div>
-
-          {/* Submit Button */}
-          <div className="pt-6 flex justify-start">
+            <input
+              type="text"
+              className="flex-1 py-4 px-4 text-sm font-mono text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
+              placeholder="QUICK_MESSAGE"
+            />
             <MagneticButton>
               <button
                 type="submit"
-                className="group flex items-center gap-3 px-10 py-5 bg-accent-lime text-black font-bold tracking-widest text-sm hover:bg-white transition-all uppercase shadow-[0_0_30px_rgba(204,255,0,0.3)]"
+                className="px-8 py-4 bg-accent-lime text-black font-bold tracking-widest text-sm hover:bg-white transition-all uppercase shadow-[0_0_30px_rgba(204,255,0,0.3)]"
               >
-                <span>Transmit_Message</span>
-                <span className="group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
+                SEND →
               </button>
             </MagneticButton>
-          </div>
-        </form>
+          </form>
+        </div>
       </motion.div>
     </section>
   );
