@@ -38,8 +38,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MANOJ G // 0xMe",
+  title: "MANOJ G // 0xEcho",
   description: "Advanced Agentic Portfolio",
+  icons: {
+    icon: "/Images/icon.svg",
+    shortcut: "/Images/icon.svg",
+    apple: "/Images/icon.svg",
+  },
 };
 
 export default function RootLayout({

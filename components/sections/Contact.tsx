@@ -11,10 +11,10 @@ const socials = [
     icon: "→",
   },
   {
-    label: "Email",
-    handle: "manojofficial.018@gmail.com",
-    url: "mailto:manojofficial.018@gmail.com",
-    icon: "✉",
+    label: "X",
+    handle: "@0xEchoDev",
+    url: "https://x.com/0xEchoDev",
+    icon: "𝕏",
   },
   {
     label: "LinkedIn",
@@ -37,18 +37,18 @@ export const Contact = () => {
         transition={{ duration: 0.6 }}
         className="bg-black/60 backdrop-blur-xl p-8 md:p-12 rounded-lg border border-white/20 pointer-events-auto select-auto"
       >
-        <span className="font-mono text-accent-lime text-xs tracking-widest block mb-2 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
+        <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
           [03] // TRANSMISSION
         </span>
         <h2
-          className="font-display text-5xl md:text-7xl font-bold uppercase text-white mb-4 leading-[0.95] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]"
+          className="font-display text-4xl md:text-7xl font-bold uppercase text-white mb-4 leading-[0.95] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]"
           style={{ fontFamily: "var(--font-family-brettaline)" }}
         >
           Let's Build <br />
           <span className="text-accent-lime">Together.</span>
         </h2>
         <p
-          className="text-lg md:text-3xl text-gray-400 mb-12 max-w-lg"
+          className="text-base md:text-2xl text-gray-400 mb-12 max-w-lg"
           style={{ fontFamily: "var(--font-family-brooklyn)" }}
         >
           Open for collaborations, freelance projects, and interesting

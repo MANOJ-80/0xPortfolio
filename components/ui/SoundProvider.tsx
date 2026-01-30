@@ -6,6 +6,7 @@ import {
   useState,
   useCallback,
   useRef,
+  useEffect,
   ReactNode,
 } from "react";
 
@@ -23,6 +24,35 @@ const SoundContext = createContext<SoundContextType | null>(null);
 export const SoundProvider = ({ children }: { children: ReactNode }) => {
   const [isMuted, setIsMuted] = useState(true); // Start muted by default for politeness
   const audioContextRef = useRef<AudioContext | null>(null);
+  const bgMusicRef = useRef<HTMLAudioElement | null>(null);
+
+  // Handle background music based on mute state
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Create audio element only once
+    if (!bgMusicRef.current) {
+      bgMusicRef.current = new Audio("/sounds/theme-trimmed.webm");
+      bgMusicRef.current.preload = "none";
+      bgMusicRef.current.loop = true;
+      bgMusicRef.current.volume = 0.3; // 30% volume for background ambience
+    }
+
+    const music = bgMusicRef.current;
+
+    if (!isMuted) {
+      music.play().catch(() => {
+        // Autoplay blocked - will play on next user interaction
+      });
+    } else {
+      music.pause();
+    }
+
+    return () => {
+      // Don't destroy on cleanup, just pause
+      music.pause();
+    };
+  }, [isMuted]);
 
   // Initialize AudioContext on first user interaction
   const getAudioContext = useCallback(() => {
@@ -101,6 +131,24 @@ export const SoundProvider = ({ children }: { children: ReactNode }) => {
     setTimeout(() => playTone(784, 0.15, 0.2, "sine"), 160); // G5
   }, [playTone]);
 
+  // Cache the whoosh buffer
+  const whooshBufferRef = useRef<AudioBuffer | null>(null);
+
+  const getWhooshBuffer = useCallback((ctx: AudioContext) => {
+    if (whooshBufferRef.current) return whooshBufferRef.current;
+
+    const bufferSize = ctx.sampleRate * 0.15;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 2);
+    }
+
+    whooshBufferRef.current = buffer;
+    return buffer;
+  }, []);
+
   // Whoosh sound for scrolling/transitions
   const playWhoosh = useCallback(() => {
     if (isMuted) return;
@@ -108,15 +156,7 @@ export const SoundProvider = ({ children }: { children: ReactNode }) => {
       const ctx = getAudioContext();
       if (ctx.state === "suspended") ctx.resume();
 
-      // Create noise for whoosh
-      const bufferSize = ctx.sampleRate * 0.15;
-      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 2);
-      }
-
+      const buffer = getWhooshBuffer(ctx);
       const noise = ctx.createBufferSource();
       noise.buffer = buffer;
 
@@ -137,7 +177,7 @@ export const SoundProvider = ({ children }: { children: ReactNode }) => {
     } catch (e) {
       // Silently fail
     }
-  }, [isMuted, getAudioContext]);
+  }, [isMuted, getAudioContext, getWhooshBuffer]);
 
   const toggleMute = useCallback(() => {
     setIsMuted((prev) => !prev);

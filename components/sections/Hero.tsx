@@ -27,7 +27,7 @@ export const Hero = () => {
           {/* Glass Shine Effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
 
-          {/* Status Badge */}
+          {/* Terminal Boot Badge */}
           <div className="relative flex justify-center mb-8">
             <div
               className="flex items-center gap-3 px-5 py-2.5 rounded-full"
@@ -37,9 +37,8 @@ export const Hero = () => {
                 border: "1px solid rgba(204, 255, 0, 0.3)",
               }}
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-lime animate-pulse shadow-[0_0_15px_#CCFF00]"></span>
-              <span className="font-mono text-xs text-accent-lime tracking-widest uppercase">
-                Available for Work
+              <span className="font-mono text-xs text-accent-lime tracking-widest">
+                ~/0xEcho<span className="animate-pulse">_</span>
               </span>
             </div>
           </div>
@@ -56,12 +55,10 @@ export const Hero = () => {
           </h1>
 
           {/* Description */}
-          <p className="relative font-mono text-sm md:text-base text-gray-300 max-w-lg mx-auto leading-relaxed mb-10">
-            Building scalable systems & secure infrastructure.{" "}
-            <span className="text-accent-lime font-semibold">
-              Full-stack engineering
-            </span>{" "}
-            with a focus on performance, security & AI integration.
+          <p className="relative text-sm md:text-xl font-semibold text-gray-300 max-w-2xl mx-auto leading-relaxed mb-10 font-mono">
+            This is my digital workspace.
+            <br />A collection of projects, experiments, and ideas I've built
+            over time.
           </p>
 
           {/* CTA Buttons */}

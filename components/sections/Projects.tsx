@@ -45,7 +45,7 @@ export const Projects = () => {
     >
       <div className="mb-12 border-b border-white/20 pb-8 flex items-end justify-between pointer-events-auto select-auto">
         <div>
-          <span className="font-mono text-accent-lime text-xs tracking-widest block mb-2 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
+          <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
             [02] // ARTIFACTS
           </span>
           <h2
@@ -78,7 +78,10 @@ export const Projects = () => {
               <span className="col-span-1 font-mono text-accent-lime/60 text-base group-hover:text-accent-lime transition-colors">
                 {project.id}
               </span>
-              <h3 className="col-span-4 font-display text-2xl md:text-4xl font-bold uppercase text-white group-hover:text-accent-lime transition-colors drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
+              <h3
+                className="col-span-4 text-xl md:text-3xl font-bold uppercase text-white group-hover:text-accent-lime transition-colors drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]"
+                style={{ fontFamily: "var(--font-family-brooklyn)" }}
+              >
                 {project.name}
               </h3>
               <div className="col-span-4 text-left">
@@ -86,7 +89,7 @@ export const Projects = () => {
                   {project.desc}
                 </span>
               </div>
-              <div className="col-span-3 text-right">
+              <div className="hidden md:block col-span-3 text-right">
                 <p className="font-mono text-accent-silver/50 text-xs uppercase tracking-wider">
                   {project.tech}
                 </p>

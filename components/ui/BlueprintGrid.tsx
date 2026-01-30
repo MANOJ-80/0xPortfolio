@@ -24,7 +24,7 @@ export const BlueprintGrid = () => {
           ":" +
           d.getMilliseconds().toString().padStart(3, "0"),
       );
-    }, 50);
+    }, 100);
     return () => clearInterval(timer);
   }, []);
 
