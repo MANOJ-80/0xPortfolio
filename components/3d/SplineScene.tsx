@@ -1,7 +1,13 @@
 "use client";
 
 import { lazy, Suspense, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 // Lazy load the standard Spline component (not the Next.js one which has async issues)
 const Spline = lazy(() => import("@splinetool/react-spline"));
@@ -39,6 +45,7 @@ const supportsWebGL = () => {
 
 export const SplineScene = ({ url, className = "" }: SplineSceneProps) => {
   const [webglSupported, setWebglSupported] = useState(false);
+  const pointerTiltX = useMotionValue(0);
 
   useEffect(() => {
     const rafId = window.requestAnimationFrame(() => {
@@ -48,17 +55,51 @@ export const SplineScene = ({ url, className = "" }: SplineSceneProps) => {
     return () => window.cancelAnimationFrame(rafId);
   }, []);
 
+  useEffect(() => {
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!media.matches) return;
+
+    const handlePointerMove = (e: PointerEvent) => {
+      const normalizedY = e.clientY / window.innerHeight - 0.5;
+      pointerTiltX.set(-normalizedY * 16);
+    };
+
+    const handlePointerLeave = () => {
+      pointerTiltX.set(0);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("pointerleave", handlePointerLeave, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerleave", handlePointerLeave);
+    };
+  }, [pointerTiltX]);
+
   // Track scroll progress across the entire page
   const { scrollYProgress } = useScroll();
 
-  // Rotation effect: rotates the scene vertically as you scroll (like click-drag behavior)
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  // Keep rotation vertical (top <-> bottom) and lock horizontal tilt.
+  const scrollTiltX = useTransform(scrollYProgress, [0, 1], [0, 18]);
+  const pointerTiltSpring = useSpring(pointerTiltX, {
+    stiffness: 140,
+    damping: 22,
+  });
+  const rotateX = useTransform(
+    [scrollTiltX, pointerTiltSpring],
+    ([scrollValue, pointerValue]) =>
+      Number(scrollValue) + Number(pointerValue),
+  );
 
   return (
     <motion.div
       className={`relative ${className}`}
       style={{
         rotateX,
+        rotateY: 0,
         transformPerspective: 1200,
         transformOrigin: "center center",
       }}

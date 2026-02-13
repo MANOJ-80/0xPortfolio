@@ -9,18 +9,18 @@ const cards = [
   {
     title: "CORE STACK",
     content: ["Python", "FastAPI", "Node.js", "React", "Docker", "Linux"],
-    cols: "col-span-1",
+    mdCols: "md:col-span-1",
   },
   {
     title: "AI / LLM",
     content: ["MCP", "ChromaDB", "RAG", "Agents", "Embeddings"],
-    cols: "col-span-1",
+    mdCols: "md:col-span-1",
   },
   {
     title: "PHILOSOPHY",
     content:
       "I see life as a series of experiments. Some succeed, some fail, but all teach. What matters most to me is staying conscious of my choices and intentional about my direction.",
-    cols: "col-span-2",
+    mdCols: "md:col-span-2",
   },
   {
     title: "CURRENTLY",
@@ -29,7 +29,7 @@ const cards = [
       { label: "status", value: "Open Source Contributor" },
       { label: "building", value: "0x Tools" },
     ],
-    cols: "col-span-2",
+    mdCols: "md:col-span-2",
     isStatus: true,
   },
 ];
@@ -64,7 +64,7 @@ export const About = () => {
               {/* Glowing border effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-lime/20 via-transparent to-accent-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
-                src="/Images/imageB&W.webp"
+                src="/Images/profile.png"
                 alt="Manojkumar S - Software Engineer"
                 fill
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
@@ -94,15 +94,15 @@ export const About = () => {
         </ScrollReveal>
 
         {/* Info Cards Grid */}
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 auto-rows-min gap-6 items-start">
           {cards.map((card, i) => (
             <ScrollReveal
               key={i}
               direction="up"
               delay={i * 0.1}
-              className={card.cols}
+              className={card.mdCols}
             >
-              <GlowCard className="p-8 bg-black/50 backdrop-blur-md h-full">
+              <GlowCard className="p-8 bg-black/50 backdrop-blur-md h-auto md:h-full">
                 <h3 className="font-mono text-xs text-accent-lime/70 tracking-widest mb-4 uppercase">
                   {card.title}
                 </h3>

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local image drafts (final asset is public/Images/profile.png)
+public/Images/Profile.webp
+public/Images/Profile1.png
