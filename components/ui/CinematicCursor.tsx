@@ -1,45 +1,76 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export const CinematicCursor = () => {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
+  const hoverScale = useMotionValue(1);
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
+  const scaleSpring = useSpring(hoverScale, { damping: 24, stiffness: 360 });
 
-  const [isHovering, setIsHovering] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const isHoveringRef = useRef(false);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16); // Center the 32px cursor
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setIsEnabled(media.matches);
+
+    update();
+    media.addEventListener("change", update);
+
+    return () => {
+      media.removeEventListener("change", update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isEnabled) return;
+
+    const updateHoverState = (value: boolean) => {
+      if (isHoveringRef.current === value) return;
+      isHoveringRef.current = value;
+      hoverScale.set(value ? 2.5 : 1);
+    };
+
+    const moveCursor = (e: PointerEvent) => {
+      cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
+    const handlePointerOver = (e: PointerEvent) => {
       const target = e.target as HTMLElement;
-      if (
+      updateHoverState(
         target.tagName === "BUTTON" ||
-        target.tagName === "A" ||
-        target.closest('[data-hover="true"]')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+          target.tagName === "A" ||
+          !!target.closest('[data-hover="true"]'),
+      );
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseover", handleMouseOver);
+    const handlePointerLeaveWindow = () => {
+      cursorX.set(-100);
+      cursorY.set(-100);
+      updateHoverState(false);
+    };
+
+    window.addEventListener("pointermove", moveCursor, { passive: true });
+    window.addEventListener("pointerover", handlePointerOver, {
+      passive: true,
+    });
+    window.addEventListener("pointerleave", handlePointerLeaveWindow);
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("pointermove", moveCursor);
+      window.removeEventListener("pointerover", handlePointerOver);
+      window.removeEventListener("pointerleave", handlePointerLeaveWindow);
     };
-  }, [cursorX, cursorY]);
+  }, [cursorX, cursorY, hoverScale, isEnabled]);
+
+  if (!isEnabled) return null;
 
   return (
     <motion.div
@@ -50,12 +81,10 @@ export const CinematicCursor = () => {
       }}
     >
       <motion.div
-        animate={{
-          scale: isHovering ? 2.5 : 1,
-          opacity: 1,
-        }}
         className="w-8 h-8 rounded-full border border-white bg-white/10 backdrop-blur-[2px]"
         style={{
+          scale: scaleSpring,
+          opacity: 1,
           boxShadow: "0 0 20px rgba(255, 255, 255, 0.2)",
         }}
       />

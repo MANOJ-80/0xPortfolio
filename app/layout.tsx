@@ -6,6 +6,7 @@ import { CinematicCursor } from "@/components/ui/CinematicCursor";
 import { LenisScroll } from "@/components/ui/LenisScroll";
 import { SoundProvider } from "@/components/ui/SoundProvider";
 import { SoundToggle } from "@/components/ui/SoundToggle";
+import { SplineScene } from "@/components/3d/SplineScene";
 
 // Premium geometric sans-serif - clean, modern, variable
 const manrope = Manrope({
@@ -65,8 +66,14 @@ export default function RootLayout({
         <SoundProvider>
           <LenisScroll />
           <CinematicCursor />
+          <div className="fixed inset-0 z-0 opacity-80 spline-container pointer-events-auto render-isolate gpu-layer">
+            <SplineScene
+              url="https://prod.spline.design/ParJWjNwBpaB6b-N/scene.splinecode"
+              className="w-full h-full"
+            />
+          </div>
           <BlueprintGrid />
-          <main className="relative z-10">{children}</main>
+          <main className="relative z-10 pointer-events-none">{children}</main>
           <SoundToggle />
         </SoundProvider>
       </body>

@@ -41,7 +41,7 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-24 px-6 relative z-10 w-full max-w-7xl mx-auto min-h-screen flex flex-col justify-center pointer-events-none select-none"
+      className="content-visibility-auto py-24 px-6 relative z-10 w-full max-w-7xl mx-auto min-h-screen flex flex-col justify-center pointer-events-none select-none"
     >
       <div className="mb-12 border-b border-white/20 pb-8 flex items-end justify-between pointer-events-auto select-auto">
         <div>

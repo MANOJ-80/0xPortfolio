@@ -28,7 +28,7 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-32 px-6 relative z-10 w-full max-w-7xl mx-auto mb-20 pointer-events-none select-none"
+      className="content-visibility-auto py-32 px-6 relative z-10 w-full max-w-7xl mx-auto mb-20 pointer-events-none select-none"
     >
       {/* Main Glass Container */}
       <motion.div

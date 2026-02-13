@@ -79,10 +79,15 @@
 body {
   color: var(--color-foreground);
   background: var(--color-background);
-  cursor: none;
   overflow-x: hidden;
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
 }
 
 /* Font utility classes - using CSS variables set by Next.js Google Fonts loader */
@@ -140,6 +145,20 @@ html.lenis body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+}
+
+.render-isolate {
+  contain: layout paint style;
+}
+
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Hide Spline Watermark */

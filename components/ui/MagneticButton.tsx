@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { useSound } from "./SoundProvider";
 
 interface RippleType {
@@ -12,17 +12,22 @@ interface RippleType {
 
 export const MagneticButton = ({ children }: { children: React.ReactNode }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 220, damping: 20, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 220, damping: 20, mass: 0.1 });
   const [ripples, setRipples] = useState<RippleType[]>([]);
   const { playHover, playClick } = useSound();
 
   const handleMouse = (e: React.MouseEvent) => {
+    if (!ref.current) return;
     const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current!.getBoundingClientRect();
+    const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
 
-    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
+    x.set(middleX * 0.2);
+    y.set(middleY * 0.2);
   };
 
   const handleMouseEnter = useCallback(() => {
@@ -31,10 +36,11 @@ export const MagneticButton = ({ children }: { children: React.ReactNode }) => {
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
+      if (!ref.current) return;
       playClick();
 
       // Create ripple effect
-      const rect = ref.current!.getBoundingClientRect();
+      const rect = ref.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const id = Date.now();
@@ -50,7 +56,8 @@ export const MagneticButton = ({ children }: { children: React.ReactNode }) => {
   );
 
   const reset = () => {
-    setPosition({ x: 0, y: 0 });
+    x.set(0);
+    y.set(0);
   };
 
   return (
@@ -60,8 +67,7 @@ export const MagneticButton = ({ children }: { children: React.ReactNode }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={reset}
       onClick={handleClick}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      style={{ x: springX, y: springY }}
       className="relative z-10 overflow-hidden"
     >
       {children}

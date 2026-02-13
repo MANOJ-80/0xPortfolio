@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { KineticText } from "@/components/ui/KineticText";
-import { SplineScene } from "@/components/3d/SplineScene";
 import { GlowCard } from "@/components/ui/GlowCard";
 import { ScrollReveal } from "@/components/ui/ScrollAnimations";
 
@@ -37,43 +35,11 @@ const cards = [
 ];
 
 export const About = () => {
-  const [shouldLoadSpline, setShouldLoadSpline] = useState(false);
-  const containerRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setShouldLoadSpline(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" },
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={containerRef}
       id="about"
-      className="py-32 px-6 relative z-10 w-full max-w-7xl mx-auto min-h-screen pointer-events-none select-none"
+      className="content-visibility-auto py-32 px-6 relative z-10 w-full max-w-7xl mx-auto min-h-screen pointer-events-none select-none"
     >
-      {/* Spline Background Animation - Fullscreen Fixed */}
-      {shouldLoadSpline && (
-        <div className="fixed inset-0 -z-10 opacity-80 spline-container pointer-events-auto">
-          <SplineScene
-            url="https://prod.spline.design/ParJWjNwBpaB6b-N/scene.splinecode"
-            className="w-full h-full"
-          />
-        </div>
-      )}
-
       <ScrollReveal
         direction="up"
         className="mb-16 relative pointer-events-auto"

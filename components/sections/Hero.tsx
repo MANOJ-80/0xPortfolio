@@ -48,9 +48,11 @@ export const Hero = () => {
             className="relative text-6xl sm:text-7xl md:text-9xl font-bold tracking-wider leading-[0.9] mb-8"
             style={{ fontFamily: "var(--font-family-brettaline)" }}
           >
-            <span className="text-white block drop-shadow-lg">System</span>
+            <span className="text-white block text-[0.82em] mb-2 drop-shadow-lg">
+              Software
+            </span>
             <span className="text-accent-lime block drop-shadow-[0_0_30px_rgba(204,255,0,0.5)]">
-              Architect
+              Engineer
             </span>
           </h1>
 
