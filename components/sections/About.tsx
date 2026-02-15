@@ -26,7 +26,7 @@ const cards = [
     title: "CURRENTLY",
     content: [
       { label: "edu", value: "B.Tech CS @ PSG iTech" },
-      { label: "status", value: "Open Source Contributor" },
+      { label: "status", value: "Freelancer, Open Source Contributor" },
       { label: "building", value: "0x Tools" },
     ],
     mdCols: "md:col-span-2",
@@ -67,6 +67,7 @@ export const About = () => {
                 src="/Images/profile.png"
                 alt="Manojkumar S - Software Engineer"
                 fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                 priority
               />
@@ -103,23 +104,25 @@ export const About = () => {
               className={card.mdCols}
             >
               <GlowCard className="p-8 bg-black/50 backdrop-blur-md h-auto md:h-full">
-                <h3 className="font-mono text-xs text-accent-lime/70 tracking-widest mb-4 uppercase">
+                <h3 className="font-mono text-xs font-semibold text-accent-lime/80 tracking-widest mb-4 uppercase">
                   {card.title}
                 </h3>
 
                 {Array.isArray(card.content) && "isStatus" in card ? (
                   // Terminal-style status display
-                  <div className="space-y-2 font-mono text-sm">
+                  <div className="space-y-2 font-mono text-sm font-medium">
                     {(card.content as { label: string; value: string }[]).map(
                       (item) => (
                         <div
                           key={item.label}
                           className="flex items-start gap-2"
                         >
-                          <span className="text-accent-lime/60 shrink-0">
+                          <span className="text-accent-lime/80 font-semibold shrink-0">
                             {item.label}:
                           </span>
-                          <span className="text-gray-200">{item.value}</span>
+                          <span className="text-gray-100 font-semibold">
+                            {item.value}
+                          </span>
                         </div>
                       ),
                     )}
@@ -136,7 +139,7 @@ export const About = () => {
                     ))}
                   </div>
                 ) : (
-                  <p className="font-sans text-gray-300 text-sm md:text-base leading-relaxed">
+                  <p className="font-sans font-semibold text-gray-100 text-sm md:text-base leading-relaxed">
                     {card.content}
                   </p>
                 )}

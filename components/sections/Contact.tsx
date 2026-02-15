@@ -1,5 +1,6 @@
 "use client";
 
+import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
@@ -25,6 +26,20 @@ const socials = [
 ];
 
 export const Contact = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const recipient = "manojofficial.018@gmail.com";
+    const subject = "Portfolio Contact";
+    const body = `From: ${email || "Not provided"}\n\n${message || "Hello Manoj,"}`;
+    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoUrl;
+  };
+
   return (
     <section
       id="contact"
@@ -44,7 +59,7 @@ export const Contact = () => {
           className="font-display text-4xl md:text-7xl font-bold uppercase text-white mb-4 leading-[0.95] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]"
           style={{ fontFamily: "var(--font-family-brettaline)" }}
         >
-          Let's Build <br />
+          Let&apos;s Build <br />
           <span className="text-accent-lime">Together.</span>
         </h2>
         <p
@@ -64,7 +79,8 @@ export const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, borderColor: "#CCFF00" }}
-              className="group p-6 border border-white/20 bg-black/30 rounded-lg hover:bg-black/50 transition-all flex items-center justify-between"
+              style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}
+              className="group p-6 border bg-black/30 rounded-lg hover:bg-black/50 transition-all flex items-center justify-between"
             >
               <div>
                 <span className="font-mono text-[10px] text-accent-lime/70 uppercase tracking-widest block mb-1">
@@ -84,18 +100,22 @@ export const Contact = () => {
         {/* Quick Contact Form */}
         <div className="border-t border-white/10 pt-8">
           <h3 className="font-mono text-xs text-accent-lime/70 uppercase tracking-widest mb-6">
-            // DROP_MESSAGE
+            [DROP_MESSAGE]
           </h3>
-          <form className="flex flex-col md:flex-row gap-4">
+          <form className="flex flex-col md:flex-row gap-4" onSubmit={handleSubmit}>
             <input
               type="email"
               className="flex-1 py-4 px-4 text-sm font-mono text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
               placeholder="YOUR_EMAIL"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
             />
             <input
               type="text"
               className="flex-1 py-4 px-4 text-sm font-mono text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
               placeholder="QUICK_MESSAGE"
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
             />
             <MagneticButton>
               <button
