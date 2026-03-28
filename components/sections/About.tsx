@@ -25,6 +25,7 @@ const cards = [
   {
     title: "CURRENTLY",
     content: [
+      { label: "work", value: "SWE Intern @ Froze Communication" },
       { label: "edu", value: "B.Tech CS @ PSG iTech" },
       { label: "status", value: "Freelancer, Open Source Contributor" },
       { label: "building", value: "0x Tools" },
