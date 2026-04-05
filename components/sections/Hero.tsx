@@ -5,85 +5,73 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-20 pointer-events-none select-none">
+    <section className="relative h-screen w-full flex items-center justify-start overflow-hidden z-20 pointer-events-none select-none pl-[15vw]">
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto px-6 pointer-events-auto select-auto">
-        {/* Liquid Glass Card */}
+      <div className="relative z-10 w-full max-w-4xl pointer-events-auto select-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-3xl p-10 md:p-14 text-center"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            boxShadow:
-              "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
-          }}
+          className="text-left"
         >
-          {/* Glass Shine Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none" />
-
-          {/* Terminal Boot Badge */}
-          <div className="relative flex justify-center mb-8">
-            <div
-              className="flex items-center gap-3 px-5 py-2.5 rounded-full"
-              style={{
-                background: "rgba(204, 255, 0, 0.1)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(204, 255, 0, 0.3)",
-              }}
-            >
-              <span className="font-mono text-xs text-accent-lime tracking-widest">
-                ~/0xEcho<span className="animate-pulse">_</span>
-              </span>
-            </div>
+          {/* Top Line */}
+          <div className="flex items-center gap-3 mb-4 opacity-90">
+            <span className="font-mono text-xs md:text-sm tracking-[0.2em] text-accent-lime">
+              ~/0XECHO_
+            </span>
+            <span className="text-gray-600 text-[10px]">•</span>
+            <span className="font-mono text-xs md:text-sm tracking-[0.2em] text-accent-lime uppercase">
+              Software Engineer
+            </span>
           </div>
 
-          {/* Main Heading - Ultra Wide Typography with Brettaline */}
-          <h1
-            className="relative text-6xl sm:text-7xl md:text-9xl font-bold tracking-wider leading-[0.9] mb-8"
-            style={{ fontFamily: "var(--font-family-brettaline)" }}
-          >
-            <span className="text-white block text-[0.82em] mb-2 drop-shadow-lg">
-              Software
-            </span>
-            <span className="text-accent-lime block drop-shadow-[0_0_30px_rgba(204,255,0,0.5)]">
-              Engineer
-            </span>
+          {/* Main Heading */}
+          <h1 className="text-[7rem] md:text-[11rem] leading-[0.85] tracking-tight mb-8 font-wide flex gap-4 group cursor-default">
+            <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.4)] group-hover:-translate-y-1">MANOJ</span>
+            <span className="text-accent-lime drop-shadow-[0_0_30px_rgba(204,255,0,0.3)] transition-all duration-500 group-hover:drop-shadow-[0_0_50px_rgba(204,255,0,0.6)] group-hover:-translate-y-1">G.</span>
           </h1>
 
+          {/* Subheading / Skills */}
+          <div className="flex flex-wrap items-center gap-4 mb-8">
+            <span className="font-mono text-xs md:text-sm tracking-[0.2em] text-gray-300 uppercase flex flex-wrap gap-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              <span>BACKEND</span> 
+              <span className="text-gray-500">•</span> 
+              <span>SECURITY</span> 
+              <span className="text-gray-500">•</span> 
+              <span>FULL STACK</span>
+              <span className="text-gray-500">•</span> 
+              <span>AI</span>
+            </span>
+            <div className="h-[1px] w-32 bg-gradient-to-r from-accent-lime/50 to-transparent"></div>
+          </div>
+
           {/* Description */}
-          <p className="relative text-sm md:text-xl font-semibold text-gray-300 max-w-2xl mx-auto leading-relaxed mb-10 font-mono">
-            This is my digital workspace.
-            <br />A collection of projects, experiments, and ideas I've built
-            over time.
-          </p>
+          <div className="mb-12 font-mono italic text-gray-200 text-sm md:text-[15px] leading-loose max-w-xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <p>This is my digital workspace.</p>
+            <p>A collection of projects, experiments,</p>
+            <p>and ideas I've built over time.</p>
+          </div>
 
           {/* CTA Buttons */}
-          <div className="relative flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap items-center gap-6 font-mono text-[13px] font-bold tracking-widest uppercase">
             <MagneticButton>
               <a
                 href="#about"
-                className="inline-block px-8 py-4 bg-accent-lime text-black font-bold text-sm tracking-widest uppercase hover:bg-white transition-all hover:shadow-[0_0_30px_rgba(204,255,0,0.5)]"
+                className="relative inline-flex items-center justify-center px-8 py-4 bg-accent-lime text-black hover:bg-white transition-colors duration-300"
+                style={{
+                  clipPath: "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))"
+                }}
               >
-                Explore
+                ./EXPLORE
               </a>
             </MagneticButton>
+            
             <MagneticButton>
               <a
                 href="#contact"
-                className="inline-block px-8 py-4 text-white font-mono text-sm tracking-widest uppercase hover:text-accent-lime transition-all"
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                }}
+                className="relative inline-flex items-center justify-center px-8 py-4 text-gray-200 hover:text-white transition-colors duration-300 bg-black/40 backdrop-blur-md border border-white/20 hover:border-accent-lime/50"
               >
-                Connect
+                ./CONNECT
               </a>
             </MagneticButton>
           </div>
