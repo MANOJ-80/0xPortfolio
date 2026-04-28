@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { KineticText } from "@/components/ui/KineticText";
 
+import Link from "next/link";
+
 const projects = [
   {
     id: "01",
@@ -112,6 +114,18 @@ export const Projects = () => {
             )}
           </motion.a>
         ))}
+      </div>
+
+      <div className="mt-16 flex justify-center pointer-events-auto select-auto">
+        <Link
+          href="/works"
+          className="group relative inline-flex items-center justify-center px-10 py-5 bg-transparent border border-white/20 text-white hover:text-black hover:bg-accent-lime hover:border-accent-lime transition-all duration-300 font-mono text-[13px] font-bold tracking-widest uppercase"
+          style={{
+            clipPath: "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))"
+          }}
+        >
+          ./SEE_MORE_WORKS
+        </Link>
       </div>
     </section>
   );
