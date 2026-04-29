@@ -9,24 +9,24 @@ import Link from "next/link";
 const projects = [
   {
     id: "01",
-    name: "0xARMOR",
-    desc: "Distributed Security Hardening & Compliance Platform",
-    tech: "Python / FastAPI / Docker / Linux",
-    url: "https://github.com/MANOJ-80/0xArmor",
-  },
-  {
-    id: "02",
     name: "0xMEMORY",
     desc: "Cross-LLM Context Engine with Persistent Memory",
     tech: "MCP / ChromaDB / Python / RAG",
     url: "https://github.com/MANOJ-80/0xMemory",
   },
   {
+    id: "02",
+    name: "0xLYNK",
+    desc: "Direct peer-to-peer file transfer in the browser using WebRTC",
+    tech: "WebRTC / JavaScript / P2P",
+    url: "https://github.com/MANOJ-80/0xLynk",
+  },
+  {
     id: "03",
-    name: "0xSHELF",
-    desc: "E-Commerce Microservices Backend",
-    tech: "React / Node.js / MongoDB / Redis",
-    url: "https://github.com/MANOJ-80/0xShelf",
+    name: "0xARMOR",
+    desc: "Distributed Security Hardening & Compliance Platform",
+    tech: "Python / FastAPI / Docker / Linux",
+    url: "https://github.com/MANOJ-80/0xArmor",
   },
   {
     id: "04",
@@ -119,7 +119,7 @@ export const Projects = () => {
       <div className="mt-16 flex justify-center pointer-events-auto select-auto">
         <Link
           href="/works"
-          className="group relative inline-flex items-center justify-center px-10 py-5 bg-transparent border border-white/20 text-white hover:text-black hover:bg-accent-lime hover:border-accent-lime transition-all duration-300 font-mono text-[13px] font-bold tracking-widest uppercase"
+          className="group relative inline-flex items-center justify-center px-10 py-5 bg-black/50 backdrop-blur-md border border-white/40 text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)] hover:text-black hover:bg-accent-lime hover:border-accent-lime transition-all duration-300 font-mono text-[13px] font-bold tracking-widest uppercase"
           style={{
             clipPath: "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))"
           }}

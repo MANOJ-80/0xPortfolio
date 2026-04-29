@@ -7,13 +7,14 @@ async function getGithubProjects() {
   try {
     // Note: To avoid rate limiting, you can add your GH token if needed, 
     // but fetching public repos of a user works without it for small request volumes.
-    // We add a 'next' option to revalidate data every hour.
-    const res = await fetch("https://api.github.com/users/MANOJ-80/repos?sort=updated&per_page=100", {
-      next: { revalidate: 3600 } 
+    // We use next: { revalidate: 60 } to ensure data is fresh but won't trigger GitHub's strict rate limits
+    const res = await fetch("https://api.github.com/users/MANOJ-80/repos?sort=pushed&per_page=100", {
+      next: { revalidate: 60 }
     });
 
     if (!res.ok) {
-      console.error("Failed to fetch github repos");
+      console.error(`Failed to fetch github repos: Status ${res.status}`);
+      // If we hit the rate limit, returning an empty array triggers the fallback UI
       return [];
     }
 
@@ -58,14 +59,16 @@ export default async function WorksPage() {
               [ALL] // ARTIFACTS
             </span>
             <h1 
-              className="font-[family-name:var(--font-wide)] text-6xl md:text-8xl font-bold uppercase text-white leading-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] mb-6 flex flex-wrap gap-4"
+              className="font-bold uppercase leading-[0.95] drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] mb-6 flex flex-wrap items-baseline gap-2 md:gap-3"
             >
-              <span className="text-white">0x_</span>
-              <span className="text-accent-lime">ARCHIVES</span>
+              <span className="text-white font-mono tracking-tighter text-5xl md:text-7xl font-light opacity-90">0x</span>
+              <span className="text-accent-lime text-4xl md:text-6xl" style={{ fontFamily: "var(--font-family-brettaline)" }}>ARCHIVES.</span>
             </h1>
-            <p className="font-mono text-gray-400 max-w-2xl text-sm md:text-base leading-relaxed">
-              A dynamic collection of all my branded (0x) repositories. 
-              Fetched directly from GitHub, ordered by most recent activity.
+            <p 
+              className="text-gray-300 max-w-2xl text-xl md:text-2xl leading-relaxed tracking-wide"
+              style={{ fontFamily: "var(--font-family-brettaline)" }}
+            >
+              A collection of my branded repositories and tools.
             </p>
           </div>
         </div>
@@ -86,7 +89,10 @@ export default async function WorksPage() {
                 
                 <div className="flex-grow z-10">
                   <div className="flex justify-between items-start mb-6">
-                    <h2 className="text-2xl font-bold text-white group-hover:text-accent-lime transition-colors duration-300 font-[family-name:var(--font-wide)] tracking-wider">
+                    <h2 
+                      className="text-2xl md:text-3xl font-bold text-white group-hover:text-accent-lime transition-colors duration-300 drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] uppercase"
+                      style={{ fontFamily: "var(--font-family-brooklyn)" }}
+                    >
                       {project.name}
                     </h2>
                     
@@ -96,7 +102,9 @@ export default async function WorksPage() {
                     </svg>
                   </div>
                   
-                  <p className="font-mono text-sm text-gray-400 mb-6 leading-relaxed line-clamp-4">
+                  <p 
+                    className="font-mono italic text-gray-400 text-[13px] md:text-[14px] leading-loose line-clamp-4 mb-6"
+                  >
                     {project.description || "No description provided. Dive into the repository to explore the codebase."}
                   </p>
                 </div>
@@ -108,8 +116,8 @@ export default async function WorksPage() {
                       {project.language || "Multi-Language"}
                     </span>
                   </div>
-                  <span className="font-mono text-[10px] text-gray-500 tracking-widest uppercase">
-                    UPDATED: {new Date(project.updated_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                  <span className="font-mono text-[10px] text-gray-400 tracking-widest uppercase bg-black/50 px-2 py-1 border border-white/10">
+                    UPDATED: {new Date(project.pushed_at || project.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </span>
                 </div>
               </a>
