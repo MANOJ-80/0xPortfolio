@@ -72,7 +72,7 @@ export const metadata: Metadata = {
       "Explore projects, systems, and engineering work by Manoj Ganesan, aka 0xEcho.",
     images: [
       {
-        url: "/Images/Profile.webp",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Manoj Ganesan, Software Engineer and 0xEcho portfolio",
@@ -85,7 +85,12 @@ export const metadata: Metadata = {
     description:
       "Projects and engineering work by Manoj Ganesan, aka 0xEcho.",
     creator: "@0xEchoDev",
-    images: ["/Images/Profile.webp"],
+    images: [
+      {
+        url: "/opengraph-image",
+        alt: "Manoj Ganesan, Software Engineer and 0xEcho portfolio",
+      },
+    ],
   },
   robots: {
     index: true,
