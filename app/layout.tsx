@@ -72,7 +72,7 @@ export const metadata: Metadata = {
       "Explore projects, systems, and engineering work by Manoj Ganesan, aka 0xEcho.",
     images: [
       {
-        url: "https://manojganesan.dev/Images/og-image.png",
+        url: "https://manojganesan.dev/Images/ogProfile.webp",
         width: 1200,
         height: 630,
         alt: "Manoj Ganesan, Software Engineer and 0xEcho portfolio",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     creator: "@0xEchoDev",
     images: [
       {
-        url: "https://manojganesan.dev/Images/og-image.png",
+        url: "https://manojganesan.dev/Images/ogProfile.webp",
         alt: "Manoj Ganesan, Software Engineer and 0xEcho portfolio",
       },
     ],
