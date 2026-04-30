@@ -70,6 +70,7 @@ export const Projects = () => {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`View ${project.name} project by Manoj Ganesan on GitHub`}
             initial={{ opacity: 0.8 }}
             whileHover={{ opacity: 1, paddingLeft: "10px" }}
             onHoverStart={() => setActiveProject(project.id)}

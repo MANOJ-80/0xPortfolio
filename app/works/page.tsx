@@ -1,6 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { GlobalSplineBackground } from "@/components/ui/GlobalSplineBackground";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Project archive from Manoj Ganesan, featuring 0xEcho software engineering work across web, AI, backend, and security tools.",
+  alternates: {
+    canonical: "/works",
+  },
+  openGraph: {
+    title: "Projects | Manoj Ganesan",
+    description:
+      "Browse public software projects and repositories by Manoj Ganesan, aka 0xEcho.",
+    url: "https://manojganesan.dev/works",
+  },
+};
 
 // We use the Next.js App Router data fetching method
 async function getGithubProjects() {
@@ -82,6 +98,7 @@ export default async function WorksPage() {
                 href={project.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`View ${project.name} repository by Manoj Ganesan on GitHub`}
                 className="group flex flex-col h-full bg-black/40 backdrop-blur-md border border-white/10 hover:border-accent-lime/50 transition-all duration-500 hover:-translate-y-2 p-8 hover:bg-black/60 relative overflow-hidden"
               >
                 {/* Glow Effect */}

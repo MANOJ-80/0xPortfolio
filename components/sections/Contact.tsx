@@ -105,6 +105,7 @@ export const Contact = () => {
           <form className="flex flex-col md:flex-row gap-4" onSubmit={handleSubmit}>
             <input
               type="email"
+              aria-label="Your email address"
               className="flex-1 py-4 px-4 text-sm font-mono text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
               placeholder="YOUR_EMAIL"
               value={email}
@@ -112,6 +113,7 @@ export const Contact = () => {
             />
             <input
               type="text"
+              aria-label="Quick message"
               className="flex-1 py-4 px-4 text-sm font-mono text-white bg-black/50 backdrop-blur-md border border-white/20 rounded-lg focus:outline-none focus:border-accent-lime transition-all placeholder:text-white/30"
               placeholder="QUICK_MESSAGE"
               value={message}

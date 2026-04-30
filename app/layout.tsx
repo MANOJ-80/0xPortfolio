@@ -40,8 +40,64 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MANOJ G // 0xEcho",
-  description: "Advanced Agentic Portfolio",
+  metadataBase: new URL("https://manojganesan.dev"),
+  title: {
+    default: "Manoj Ganesan | Software Engineer",
+    template: "%s | Manoj Ganesan",
+  },
+  description:
+    "Portfolio of Manoj Ganesan, aka 0xEcho, a full stack and backend Software Engineer building practical web, AI, and security projects.",
+  keywords: [
+    "manoj ganesan",
+    "0xecho",
+    "manoj g",
+    "manoj",
+    "software engineer",
+    "full stack engineer",
+    "backend engineer",
+  ],
+  authors: [{ name: "Manoj Ganesan", url: "https://manojganesan.dev" }],
+  creator: "Manoj Ganesan",
+  publisher: "Manoj Ganesan",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://manojganesan.dev",
+    siteName: "0xEcho",
+    title: "Manoj Ganesan | Software Engineer",
+    description:
+      "Explore projects, systems, and engineering work by Manoj Ganesan, aka 0xEcho.",
+    images: [
+      {
+        url: "/Images/Profile.webp",
+        width: 1200,
+        height: 630,
+        alt: "Manoj Ganesan, Software Engineer and 0xEcho portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manoj Ganesan | Software Engineer",
+    description:
+      "Projects and engineering work by Manoj Ganesan, aka 0xEcho.",
+    creator: "@0xEchoDev",
+    images: ["/Images/Profile.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "/Images/icon.svg",
     shortcut: "/Images/icon.svg",
@@ -69,7 +125,7 @@ export default function RootLayout({
           <CinematicCursor />
           <GlobalSplineBackground />
           <BlueprintGrid />
-          <main className="relative z-10 pointer-events-none">{children}</main>
+          <div className="relative z-10 pointer-events-none">{children}</div>
           <ThemeColorPicker />
           <SoundToggle />
         </SoundProvider>

@@ -66,7 +66,7 @@ export const About = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-accent-lime/20 via-transparent to-accent-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src="/Images/profile.png"
-                alt="Manojkumar S - Software Engineer"
+                alt="Portrait of Manoj Ganesan, Software Engineer known as 0xEcho"
                 fill
                 sizes="(min-width: 1024px) 33vw, 100vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
