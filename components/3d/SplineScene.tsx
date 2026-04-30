@@ -105,7 +105,7 @@ export const SplineScene = ({ url, className = "" }: SplineSceneProps) => {
       }}
     >
       {!webglSupported ? (
-        <div className="w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(204,255,0,0.12),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(255,255,255,0.08),transparent_50%),linear-gradient(180deg,rgba(6,6,6,0.8),rgba(3,3,3,0.95))]" />
+        <div className="w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(var(--accent-primary-rgb),0.12),transparent_45%),radial-gradient(circle_at_70%_65%,rgba(255,255,255,0.08),transparent_50%),linear-gradient(180deg,rgba(6,6,6,0.8),rgba(3,3,3,0.95))]" />
       ) : (
       <Suspense
         fallback={

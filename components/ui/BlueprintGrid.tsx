@@ -50,6 +50,9 @@ export const BlueprintGrid = () => {
 
     const drawGrid = (width: number, height: number) => {
       const gridSize = 60;
+      const accentRgb = getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent-primary-rgb")
+        .trim();
       ctx.clearRect(0, 0, width, height);
 
       ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
@@ -69,7 +72,7 @@ export const BlueprintGrid = () => {
         ctx.stroke();
       }
 
-      ctx.fillStyle = "rgba(204, 255, 0, 0.3)";
+      ctx.fillStyle = `rgba(${accentRgb || "204, 255, 0"}, 0.3)`;
       for (let x = 0; x <= width; x += gridSize) {
         for (let y = 0; y <= height; y += gridSize) {
           if (Math.random() > 0.95) {
@@ -100,9 +103,13 @@ export const BlueprintGrid = () => {
     };
 
     window.addEventListener("resize", handleResize, { passive: true });
+    window.addEventListener("accent-color-change", handleResize);
     handleResize();
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("accent-color-change", handleResize);
+    };
   }, []);
 
   return (

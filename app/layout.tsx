@@ -7,6 +7,7 @@ import { LenisScroll } from "@/components/ui/LenisScroll";
 import { SoundProvider } from "@/components/ui/SoundProvider";
 import { SoundToggle } from "@/components/ui/SoundToggle";
 import { GlobalSplineBackground } from "@/components/ui/GlobalSplineBackground";
+import { ThemeColorPicker } from "@/components/ui/ThemeColorPicker";
 
 // Premium geometric sans-serif - clean, modern, variable
 const manrope = Manrope({
@@ -69,6 +70,7 @@ export default function RootLayout({
           <GlobalSplineBackground />
           <BlueprintGrid />
           <main className="relative z-10 pointer-events-none">{children}</main>
+          <ThemeColorPicker />
           <SoundToggle />
         </SoundProvider>
       </body>

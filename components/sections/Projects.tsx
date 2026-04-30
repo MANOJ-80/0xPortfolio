@@ -47,7 +47,7 @@ export const Projects = () => {
     >
       <div className="mb-12 border-b border-white/20 pb-8 flex items-end justify-between pointer-events-auto select-auto">
         <div>
-          <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
+          <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(var(--accent-primary-rgb),0.5)]">
             [02] // ARTIFACTS
           </span>
           <h2

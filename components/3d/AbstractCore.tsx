@@ -1,12 +1,30 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 import * as THREE from "three";
 
 export const AbstractCore = () => {
   const meshRef = useRef<THREE.Mesh>(null);
+  const [accentColor, setAccentColor] = useState("#CCFF00");
+
+  useEffect(() => {
+    const syncAccentColor = () => {
+      const currentColor = getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent-primary")
+        .trim();
+
+      setAccentColor(currentColor || "#CCFF00");
+    };
+
+    syncAccentColor();
+    window.addEventListener("accent-color-change", syncAccentColor);
+
+    return () => {
+      window.removeEventListener("accent-color-change", syncAccentColor);
+    };
+  }, []);
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -35,7 +53,7 @@ export const AbstractCore = () => {
     <Sphere args={[2.2, 64, 64]} ref={meshRef}>
       <MeshDistortMaterial
         color="#050505"
-        emissive="#CCFF00"
+        emissive={accentColor}
         emissiveIntensity={0.5}
         roughness={0.2}
         metalness={0.8}

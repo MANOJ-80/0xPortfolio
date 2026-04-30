@@ -55,7 +55,7 @@ export default async function WorksPage() {
           </Link>
 
           <div>
-            <span className="font-mono text-accent-lime text-xs tracking-widest block mb-4 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
+            <span className="font-mono text-accent-lime text-xs tracking-widest block mb-4 drop-shadow-[0_2px_10px_rgba(var(--accent-primary-rgb),0.5)]">
               [ALL] // ARTIFACTS
             </span>
             <h1 

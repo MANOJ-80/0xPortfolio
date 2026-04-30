@@ -21,12 +21,12 @@
   /* Colors */
   --color-background: #030303;
   --color-foreground: #e4e4e4;
-  --color-accent-lime: #ccff00;
+  --color-accent-lime: var(--accent-primary);
   --color-accent-silver: #e4e4e4;
   --color-accent-purple: #8b5cf6;
   --color-accent-orange: #ff4d00;
   --color-grid-light: rgba(228, 228, 228, 0.05);
-  --color-grid-hover: rgba(204, 255, 0, 0.1);
+  --color-grid-hover: rgba(var(--accent-primary-rgb), 0.1);
 
   /* Font families */
   --font-family-display: var(--font-display), system-ui, sans-serif;
@@ -74,6 +74,8 @@
 
 :root {
   /* These are fallbacks - Next.js sets --font-sans, --font-display, etc via className */
+  --accent-primary: #ccff00;
+  --accent-primary-rgb: 204, 255, 0;
 }
 
 body {

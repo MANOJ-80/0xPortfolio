@@ -28,7 +28,7 @@ export const Hero = () => {
           {/* Main Heading */}
           <h1 className="text-[7rem] md:text-[11rem] leading-[0.85] tracking-tight mb-8 font-wide flex gap-4 group cursor-default">
             <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-500 group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.4)] group-hover:-translate-y-1">MANOJ</span>
-            <span className="text-accent-lime drop-shadow-[0_0_30px_rgba(204,255,0,0.3)] transition-all duration-500 group-hover:drop-shadow-[0_0_50px_rgba(204,255,0,0.6)] group-hover:-translate-y-1">G.</span>
+            <span className="text-accent-lime drop-shadow-[0_0_30px_rgba(var(--accent-primary-rgb),0.3)] transition-all duration-500 group-hover:drop-shadow-[0_0_50px_rgba(var(--accent-primary-rgb),0.6)] group-hover:-translate-y-1">G.</span>
           </h1>
 
           {/* Subheading / Skills */}

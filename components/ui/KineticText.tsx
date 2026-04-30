@@ -87,7 +87,7 @@ export const KineticText = ({
       }}
       whileHover={{
         scale: 1.02,
-        textShadow: "0 0 30px rgba(204, 255, 0, 0.5)",
+        textShadow: "0 0 30px rgba(var(--accent-primary-rgb), 0.5)",
       }}
       transition={{ duration: 0.2 }}
     >

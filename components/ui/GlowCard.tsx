@@ -13,7 +13,7 @@ interface GlowCardProps {
 export const GlowCard = ({
   children,
   className = "",
-  glowColor = "rgba(204, 255, 0, 0.15)",
+  glowColor = "rgba(var(--accent-primary-rgb), 0.15)",
 }: GlowCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { playHover } = useSound();
@@ -95,8 +95,8 @@ export const GlassCard = ({ children, className = "" }: GlassCardProps) => {
     <motion.div
       onMouseEnter={playHover}
       whileHover={{
-        borderColor: "rgba(204, 255, 0, 0.3)",
-        boxShadow: "0 0 30px rgba(204, 255, 0, 0.1)",
+        borderColor: "rgba(var(--accent-primary-rgb), 0.3)",
+        boxShadow: "0 0 30px rgba(var(--accent-primary-rgb), 0.1)",
       }}
       transition={{ duration: 0.3 }}
       className={`relative overflow-hidden rounded-xl backdrop-blur-xl border border-white/10 ${className}`}

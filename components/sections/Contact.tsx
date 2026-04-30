@@ -52,7 +52,7 @@ export const Contact = () => {
         transition={{ duration: 0.6 }}
         className="bg-black/60 backdrop-blur-xl p-8 md:p-12 rounded-lg border border-white/20 pointer-events-auto select-auto"
       >
-        <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
+        <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(var(--accent-primary-rgb),0.5)]">
           [03] // TRANSMISSION
         </span>
         <h2
@@ -78,7 +78,7 @@ export const Contact = () => {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, borderColor: "#CCFF00" }}
+              whileHover={{ scale: 1.02, borderColor: "var(--accent-primary)" }}
               style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}
               className="group p-6 border bg-black/30 rounded-lg hover:bg-black/50 transition-all flex items-center justify-between"
             >
@@ -120,7 +120,7 @@ export const Contact = () => {
             <MagneticButton>
               <button
                 type="submit"
-                className="px-8 py-4 bg-accent-lime text-black font-bold tracking-widest text-sm hover:bg-white transition-all uppercase shadow-[0_0_30px_rgba(204,255,0,0.3)]"
+                className="px-8 py-4 bg-accent-lime text-black font-bold tracking-widest text-sm hover:bg-white transition-all uppercase shadow-[0_0_30px_rgba(var(--accent-primary-rgb),0.3)]"
               >
                 SEND →
               </button>

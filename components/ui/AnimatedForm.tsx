@@ -33,7 +33,7 @@ export const AnimatedInput = forwardRef<HTMLInputElement, AnimatedInputProps>(
               y: isFocused || hasValue ? -24 : 0,
               scale: isFocused || hasValue ? 0.85 : 1,
               color: isFocused
-                ? "#CCFF00"
+                ? "var(--accent-primary)"
                 : error
                   ? "#ff4444"
                   : "rgba(255,255,255,0.5)",
@@ -58,7 +58,7 @@ export const AnimatedInput = forwardRef<HTMLInputElement, AnimatedInputProps>(
               error
                 ? "border-red-500 shadow-[0_0_15px_rgba(255,0,0,0.3)]"
                 : isFocused
-                  ? "border-accent-lime shadow-[0_0_15px_rgba(204,255,0,0.2)]"
+                  ? "border-accent-lime shadow-[0_0_15px_rgba(var(--accent-primary-rgb),0.2)]"
                   : "border-white/20"
             } ${className}`}
           />

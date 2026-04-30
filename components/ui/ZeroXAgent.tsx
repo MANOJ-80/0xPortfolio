@@ -76,7 +76,7 @@ export const ZeroXAgent = () => {
         onClick={toggleChat}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-accent-lime text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-shadow"
+        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-accent-lime text-black rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(var(--accent-primary-rgb),0.3)] hover:shadow-[0_0_30px_rgba(var(--accent-primary-rgb),0.5)] transition-shadow"
       >
         {isOpen ? <X size={20} /> : <MessageSquare size={20} />}
       </motion.button>

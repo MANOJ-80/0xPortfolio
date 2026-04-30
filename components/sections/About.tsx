@@ -45,7 +45,7 @@ export const About = () => {
         direction="up"
         className="mb-16 relative pointer-events-auto"
       >
-        <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(204,255,0,0.5)]">
+        <span className="font-mono text-accent-lime text-xs tracking-widest block mb-6 drop-shadow-[0_2px_10px_rgba(var(--accent-primary-rgb),0.5)]">
           [01] // DATA_DUMP
         </span>
         <h2
