@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { KineticText } from "@/components/ui/KineticText";
 import { GlowCard } from "@/components/ui/GlowCard";
 import { ScrollReveal } from "@/components/ui/ScrollAnimations";
@@ -66,7 +67,7 @@ export const About = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-accent-lime/20 via-transparent to-accent-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <Image
                 src="/Images/profile.png"
-                alt="Portrait of Manoj Ganesan, Software Engineer known as 0xEcho"
+                alt="Manoj Ganesan Software Engineer 0xEcho"
                 fill
                 sizes="(min-width: 1024px) 33vw, 100vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
@@ -147,6 +148,23 @@ export const About = () => {
               </GlowCard>
             </ScrollReveal>
           ))}
+
+          <ScrollReveal
+            direction="up"
+            delay={cards.length * 0.1}
+            className="md:col-span-2"
+          >
+            <Link
+              href="/about"
+              className="group relative inline-flex items-center justify-center px-8 py-4 bg-black/50 backdrop-blur-md border border-white/40 text-white drop-shadow-[0_4px_15px_rgba(0,0,0,0.8)] hover:text-black hover:bg-accent-lime hover:border-accent-lime transition-all duration-300 font-mono text-[13px] font-bold tracking-widest uppercase"
+              style={{
+                clipPath:
+                  "polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))",
+              }}
+            >
+              ./MORE_ABOUT_ME
+            </Link>
+          </ScrollReveal>
         </div>
       </div>
     </section>

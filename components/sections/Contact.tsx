@@ -20,7 +20,7 @@ const socials = [
   {
     label: "LinkedIn",
     handle: "manoj-g",
-    url: "https://www.linkedin.com/in/manoj-g-2444ab28a/",
+    url: "https://www.linkedin.com/in/manoj-ganesan-2444ab28a/",
     icon: "in",
   },
 ];

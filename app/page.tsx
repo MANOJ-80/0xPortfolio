@@ -11,14 +11,14 @@ const structuredData = [
     name: "Manoj Ganesan",
     alternateName: ["Manoj", "Manoj G", "MANOJ G", "0xEcho"],
     url: "https://manojganesan.dev",
-    image: "https://manojganesan.dev/Images/Profile.webp",
+    image: "https://manojganesan.dev/manoj-ganesan.webp",
     jobTitle: "Software Engineer",
     description:
       "Full stack and backend Software Engineer building practical web, AI, and security projects.",
     sameAs: [
       "https://github.com/MANOJ-80",
       "https://x.com/0xEchoDev",
-      "https://www.linkedin.com/in/manoj-g-2444ab28a/",
+      "https://www.linkedin.com/in/manoj-ganesan-2444ab28a/",
     ],
     knowsAbout: [
       "Full Stack Development",

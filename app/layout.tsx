@@ -42,7 +42,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://manojganesan.dev"),
   title: {
-    default: "Manoj Ganesan | Software Engineer",
+    default: "Manoj Ganesan (0xEcho) | Software Engineer",
     template: "%s | Manoj Ganesan",
   },
   description:
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://manojganesan.dev",
     siteName: "0xEcho",
-    title: "Manoj Ganesan | Software Engineer",
+    title: "Manoj Ganesan (0xEcho) | Software Engineer",
     description:
       "Explore projects, systems, and engineering work by Manoj Ganesan, aka 0xEcho.",
     images: [
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Manoj Ganesan | Software Engineer",
+    title: "Manoj Ganesan (0xEcho) | Software Engineer",
     description:
       "Projects and engineering work by Manoj Ganesan, aka 0xEcho.",
     creator: "@0xEchoDev",
