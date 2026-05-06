@@ -4,18 +4,42 @@ import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { GlobalSplineBackground } from "@/components/ui/GlobalSplineBackground";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Projects & Archives | Manoj Ganesan (0xEcho)",
   description:
-    "Project archive from Manoj Ganesan, featuring 0xEcho software engineering work across web, AI, backend, and security tools.",
+    "Explore the project archive of Manoj Ganesan (0xEcho), featuring software engineering work across web, AI, backend, and security tools.",
   alternates: {
-    canonical: "/works",
+    canonical: "https://manojganesan.dev/works",
   },
   openGraph: {
-    title: "Projects | Manoj Ganesan",
+    title: "Projects & Archives | Manoj Ganesan (0xEcho)",
     description:
       "Browse public software projects and repositories by Manoj Ganesan, aka 0xEcho.",
     url: "https://manojganesan.dev/works",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects & Archives | Manoj Ganesan (0xEcho)",
+    description: "Browse public software projects and repositories by Manoj Ganesan, aka 0xEcho.",
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://manojganesan.dev"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Works & Archives",
+      "item": "https://manojganesan.dev/works"
+    }
+  ]
 };
 
 // We use the Next.js App Router data fetching method
@@ -52,7 +76,12 @@ export default async function WorksPage() {
   const projects = await getGithubProjects();
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-accent-lime selection:text-black">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-accent-lime selection:text-black">
       {/* Background components to match the rest of the site */}
       <GlobalSplineBackground />
       <BlueprintGrid />
@@ -149,5 +178,6 @@ export default async function WorksPage() {
         )}
       </main>
     </div>
+    </>
   );
 }

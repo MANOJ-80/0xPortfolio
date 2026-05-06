@@ -1,95 +1,59 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 
-const structuredData = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://manojganesan.dev/#person",
-    name: "Manoj Ganesan",
-    alternateName: ["Manoj", "Manoj G", "MANOJ G", "0xEcho"],
-    url: "https://manojganesan.dev",
-    image: "https://manojganesan.dev/manoj-ganesan.webp",
-    jobTitle: "Software Engineer",
-    description:
-      "Full stack and backend Software Engineer building practical web, AI, and security projects.",
-    sameAs: [
-      "https://github.com/MANOJ-80",
-      "https://x.com/0xEchoDev",
-      "https://www.linkedin.com/in/manoj-ganesan-2444ab28a/",
-    ],
-    knowsAbout: [
-      "Full Stack Development",
-      "Backend Engineering",
-      "Python",
-      "FastAPI",
-      "React",
-      "Next.js",
-      "AI Agents",
-      "Security Engineering",
-    ],
+export const metadata: Metadata = {
+  title: "Manoj Ganesan (0xEcho) | Software Engineer",
+  description: "Manoj Ganesan (0xEcho) is a Software Engineer building full-stack and backend systems. Explore projects and portfolio.",
+  alternates: {
+    canonical: "https://manojganesan.dev",
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://manojganesan.dev/#website",
-    name: "0xEcho",
-    alternateName: "Manoj Ganesan Portfolio",
+  openGraph: {
+    title: "Manoj Ganesan (0xEcho) | Software Engineer",
+    description: "Manoj Ganesan (0xEcho) is a Software Engineer building full-stack and backend systems. Explore projects and portfolio.",
     url: "https://manojganesan.dev",
-    author: {
+    siteName: "Manoj Ganesan (0xEcho)",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Manoj Ganesan (0xEcho) | Software Engineer",
+    description: "Manoj Ganesan (0xEcho) is a Software Engineer building full-stack and backend systems. Explore projects and portfolio.",
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
       "@id": "https://manojganesan.dev/#person",
+      "name": "Manoj Ganesan",
+      "alternateName": [
+        "Manoj",
+        "Manoj G",
+        "0xEcho"
+      ],
+      "url": "https://manojganesan.dev",
+      "jobTitle": "Software Engineer",
+      "sameAs": [
+        "https://www.linkedin.com/in/manoj-ganesan-2444ab28a/",
+        "https://github.com/MANOJ-80"
+      ]
     },
-    description:
-      "Portfolio website for Manoj Ganesan, aka 0xEcho, featuring software engineering projects and technical work.",
-    inLanguage: "en",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "@id": "https://manojganesan.dev/#projects",
-    name: "Featured Software Projects",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        item: {
-          "@type": "SoftwareSourceCode",
-          name: "0xMEMORY",
-          codeRepository: "https://github.com/MANOJ-80/0xMemory",
-          programmingLanguage: ["Python"],
-          description:
-            "Cross-LLM context engine that adds persistent memory and retrieval for AI workflows.",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@type": "SoftwareSourceCode",
-          name: "0xLYNK",
-          codeRepository: "https://github.com/MANOJ-80/0xLynk",
-          programmingLanguage: ["JavaScript"],
-          description:
-            "Browser-based peer-to-peer file transfer tool built with WebRTC for direct sharing.",
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@type": "SoftwareSourceCode",
-          name: "0xARMOR",
-          codeRepository: "https://github.com/MANOJ-80/0xArmor",
-          programmingLanguage: ["Python"],
-          description:
-            "Security hardening and compliance platform for Linux systems and operational workflows.",
-        },
-      },
-    ],
-  },
-];
+    {
+      "@type": "WebSite",
+      "@id": "https://manojganesan.dev/#website",
+      "url": "https://manojganesan.dev",
+      "name": "Manoj Ganesan (0xEcho) | Software Engineer",
+      "publisher": {
+        "@id": "https://manojganesan.dev/#person"
+      }
+    }
+  ]
+};
 
 export default function Home() {
   return (

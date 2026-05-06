@@ -5,18 +5,42 @@ import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { GlobalSplineBackground } from "@/components/ui/GlobalSplineBackground";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Manoj Ganesan (0xEcho) | Software Engineer",
   description:
-    "About Manoj Ganesan, also known as 0xEcho, a Software Engineer focused on backend systems, security tooling, AI agents, and full-stack products.",
+    "Learn about Manoj Ganesan (0xEcho), a Software Engineer specializing in full-stack and backend development.",
   alternates: {
-    canonical: "/about",
+    canonical: "https://manojganesan.dev/about",
   },
   openGraph: {
-    title: "About Manoj Ganesan | 0xEcho",
+    title: "About Manoj Ganesan (0xEcho) | Software Engineer",
     description:
-      "Learn more about Manoj Ganesan, his software engineering work, projects, education, and technical focus.",
+      "Learn about Manoj Ganesan (0xEcho), a Software Engineer specializing in full-stack and backend development.",
     url: "https://manojganesan.dev/about",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Manoj Ganesan (0xEcho) | Software Engineer",
+    description: "Learn about Manoj Ganesan (0xEcho), a Software Engineer specializing in full-stack and backend development.",
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://manojganesan.dev"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "About",
+      "item": "https://manojganesan.dev/about"
+    }
+  ]
 };
 
 const focusAreas = [
@@ -80,7 +104,12 @@ const projects = [
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-accent-lime selection:text-black">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-accent-lime selection:text-black">
       <GlobalSplineBackground />
       <BlueprintGrid />
 
@@ -300,5 +329,6 @@ export default function AboutPage() {
         </section>
       </main>
     </div>
+    </>
   );
 }
